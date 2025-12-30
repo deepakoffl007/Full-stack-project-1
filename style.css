@@ -3,7 +3,7 @@
     padding:0;
     box-sizing:border-box;
     font-family: var(--aot-sys-typography-font-family-display);
-width:100%;
+
 }
 /* HEADER */
 #main-header {
@@ -32,9 +32,10 @@ width:100%;
 .header-inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 18px 60px;
+  justify-content: center;
+  padding: 30px 60px;
   background-color:black;
+  
 }
 
 nav a {
