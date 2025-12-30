@@ -3,15 +3,93 @@
     <head>
     <meta charset="UTF8">
     <meta name="viewport" content ="width=device-width , initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="custom.css">
     <link rel="icon" href="candidlogo.png">
     </head>
 </html>
 
 <body>
+
+    <div id="header-placeholder"></div>
+
+<section>
     <div class="main">
         <h1 class="top">Custom Industrial Automation Machines</h1>
     </div>
         <p class="topp"> CANDID Automation's team of experts provides industrial automation machines with customizable parts and modularized updates to ensure peak performance. Our knowledgeable engineering staff has a multitude of experience building automation machines from single, stand-alone part assembly units to multi-station, multi-purpose systems with automated vision systems for quality control.</p>
     </div>
+
+    <div class="midmain">
+        <div class="paramain">
+            <h4 class="ha">The Modular Design System</h4>
+            <p class="p1">Our modular design system comes with a standard base, and modular expansion fixtures can be integrated into this to provide a customized automated assembly. Whether your company creates plastic or metal parts, one-off or complex assembly parts, these machines can produce your products.</p>
+            <p class="p2">Our modularized system allows customers to add or remove an expansion module at any time without disrupting or stopping the entire production line. Broken modules can be serviced separately, while the rest of the system continues to work— minimizing downtime and improving overall productivity.</p>
+            <p class="p3">In addition, this system is future-proof by offering expansion capability by easily adding new modules onto the base system. Even if your company changes products or specifications, modules can be changed to meet any requirement with ease. This allows our machines to become a reusable asset for your company.</p>
+        </div>
+
+        
+        <div class="slider-col">
+            <div class="slider">
+                <img src="01-web.png" class="slide active">
+                <img src="02-web.png" class="slide">
+                <img src="03-web.png" class="slide">
+                <img src="04-web.png" class="slide">
+                <img src="05-web.png" class="slide">
+                <img src="06-web.png" class="slide">
+                <img src="07-web.png" class="slide">
+                <img src="08-web.png" class="slide">
+            </div>
+            
+            <div class="dots"></div>
+        </div>
+        
+    </div>
+    
+</section>
+
+    <script src="script.js"></script>
+
+    <div class="dots"></div>
+
+<script>
+const slides = document.querySelectorAll(".slide");
+const dotsContainer = document.querySelector(".dots");
+let index = 0;
+let interval;
+
+slides.forEach((_, i) => {
+  const dot = document.createElement("span");
+  dot.classList.add("dot");
+  if (i === 0) dot.classList.add("active");
+  dot.addEventListener("click", () => {
+    showSlide(i);
+    resetAutoSlide();
+  });
+  dotsContainer.appendChild(dot);
+});
+
+const dots = document.querySelectorAll(".dot");
+
+function showSlide(i) {
+  slides[index].classList.remove("active");
+  dots[index].classList.remove("active");
+  index = i;
+  slides[index].classList.add("active");
+  dots[index].classList.add("active");
+}
+
+function autoSlide() {
+  showSlide((index + 1) % slides.length);
+}
+
+function resetAutoSlide() {
+  clearInterval(interval);
+  interval = setInterval(autoSlide, 3000);
+}
+
+interval = setInterval(autoSlide, 3000);
+</script>
+</body>
+
 </body>
