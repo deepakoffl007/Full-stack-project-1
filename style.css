@@ -3,7 +3,7 @@
     padding:0;
     box-sizing:border-box;
     font-family: var(--aot-sys-typography-font-family-display);
-
+width:100%;
 }
 /* HEADER */
 #main-header {
@@ -25,6 +25,7 @@
 }
 .header-spacer{
     height:80px;
+    background-color:black;
 
 }
 
@@ -33,6 +34,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 18px 60px;
+  background-color:black;
 }
 
 nav a {
@@ -102,4 +104,364 @@ nav a {
     width:30px;
     height:20px;
 
+}
+.main1{
+   
+    justify-content:center;
+    text-align:center;
+    color:black;
+   
+
+}
+.main1 h5{
+    justify-content:center;
+    text-align:center;
+    
+        font-size: 21px;
+    
+    text-align: center;
+    
+    font-weight: 300;
+    font-style: normal;
+    margin-right: 20% !important;
+    margin-bottom: 30px !important;
+    margin-left: 20% !important;
+
+}
+.main1 img{
+    width:100px;
+    height:100px;
+    margin:40px;
+
+
+}
+.main1 h1{
+    margin-bottom:30px;
+
+}
+.industry-section {
+  padding: 100px 0px;
+  background: #fff;
+}
+
+.industry-container {
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+/* CIRCULAR IMAGE */
+.industry-image {
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid orange;
+  flex-shrink: 0;
+}
+
+.industry-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* TEXT SIDE */
+.industry-content h2 {
+  font-size: 36px;
+  font-weight: 300;
+  color: #555;
+}
+
+.industry-content h2 span {
+  font-weight: 700;
+  color: #000;
+}
+
+.industry-content p {
+  margin: 20px 0 30px;
+  max-width: 520px;
+  line-height: 1.7;
+  color: #666;
+}
+
+.industry-content button {
+  padding: 14px 28px;
+  border: 2px solid #222;
+  background: transparent;
+  cursor: pointer;
+  font-size: 15px;
+}
+@media (max-width: 900px) {
+  .industry-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .industry-content p {
+    max-width: 100%;
+  }
+}
+.manufacturing-section {
+  background: #ed0404; /* dark blue */
+  padding: 120px 0px;
+}
+
+.manufacturing-container {
+  max-width: 1200px;
+  margin: 0 auto;      /* centers content */
+  padding: 0 40px;     /* controlled inner spacing */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 80px;
+}
+
+/* LEFT CONTENT */
+.manufacturing-content {
+  max-width: 520px;
+  color: white;
+}
+
+.manufacturing-content h2 {
+  font-size: 40px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.manufacturing-content h2 span {
+  font-weight: 700;
+}
+
+.manufacturing-content p {
+  line-height: 1.7;
+  color: #d0d8df;
+  margin-bottom: 35px;
+}
+
+/* BUTTON */
+.manufacturing-btn {
+  display: inline-block;
+  padding: 14px 26px;
+  border: 2px solid #fff;
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  transition: all 0.3s ease;
+}
+
+.manufacturing-btn:hover {
+  background: white;
+  color: #162f47;
+}
+
+/* RIGHT CIRCLE IMAGE */
+.manufacturing-image {
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #000;
+  flex-shrink: 0;
+}
+
+.manufacturing-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media (max-width: 900px) {
+  .manufacturing-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .manufacturing-image {
+    width: 300px;
+    height: 300px;
+  }
+}
+/* LIGHT SECTION */
+.doc-section {
+  background: #ffffff;
+  width: 100vw;          /* full screen */
+  padding: 120px 0;      /* top/bottom only */
+}
+
+/* CENTERED CONTENT */
+.doc-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 80px;
+}
+
+/* IMAGE */
+.doc-image {
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid #6f8fa8;
+  flex-shrink: 0;
+}
+
+.doc-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* TEXT */
+.doc-content h2 {
+  font-size: 38px;
+  font-weight: 300;
+  color: #666;
+  margin-bottom: 20px;
+}
+
+.doc-content h2 span {
+  font-weight: 700;
+  color: #222;
+}
+
+.doc-content p {
+  line-height: 1.7;
+  color: #666;
+  max-width: 520px;
+}
+@media (max-width: 900px) {
+  .doc-container {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .doc-image {
+    width: 300px;
+    height: 300px;
+  }
+
+  .doc-content p {
+    max-width: 100%;
+  }
+}
+.split-section {
+  display: flex;
+  width: 100vw;
+  min-height: 100vh;
+}
+
+/* EACH HALF */
+.split-box {
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 60px;
+  box-sizing: border-box;
+}
+
+/* LEFT + RIGHT COLORS */
+.split-left {
+  background: #9a958b; /* beige/olive */
+}
+
+.split-right {
+  background: #5e5e5e; /* dark grey */
+}
+
+/* CONTENT */
+.split-content {
+  max-width: 520px;
+  text-align: center;
+  color: white;
+}
+
+.icon {
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.split-content h2 {
+  font-size: 32px;
+  font-weight: 300;
+  margin-bottom: 20px;
+}
+
+.split-content h2 span {
+  font-weight: 700;
+}
+
+.split-content p {
+  line-height: 1.7;
+  font-size: 15px;
+}@media (max-width: 900px) {
+  .split-section {
+    flex-direction: column;
+  }
+
+  .split-box {
+    width: 100%;
+  }
+}
+.site-footer {
+  background: #e2e0e0;
+  color: #0c0101;
+  width: 100vw;
+  padding: 80px 0 30px;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+  display: flex;
+  justify-content: space-between;
+  gap: 60px;
+}
+
+.footer-col h4 {
+  color: orange;
+  margin-bottom: 20px;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-col ul li {
+  margin-bottom: 10px;
+}
+
+.footer-col a {
+  color: orange;
+  text-decoration: none;
+}
+
+.footer-col a:hover {
+  text-decoration: underline;
+}
+
+.footer-col p {
+  line-height: 1.6;
+}
+
+.footer-logo {
+  max-width: 180px;
+  margin-bottom: 20px;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 50px;
+  color: #ccc;
+  font-size: 14px;
+}
+@media (max-width: 900px) {
+  .footer-container {
+    flex-direction: column;
+  }
 }
