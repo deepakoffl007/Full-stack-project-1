@@ -1,0 +1,95 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: var(--aot-sys-typography-font-family-display);
+
+}
+/* HEADER */
+#main-header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 9999;
+  background: transparent;
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+#main-header.scrolled {
+  background: #0f2a44;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.header-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 60px;
+}
+
+nav a {
+  color: white;
+  margin-left: 25px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+#main-header.scrolled nav a {
+  color: white;
+}
+
+/* HERO SLIDER */
+.hero-slider {
+  height: 100vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 1.2s ease;
+}
+
+.slide.active {
+  opacity: 1;
+}
+
+/* DARK OVERLAY */
+.hero-slider::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  z-index: 1;
+}
+
+/* HERO TEXT */
+.hero-text {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding-left: 80px;
+  color: white;
+}
+
+.hero-text h1 {
+  font-size: 56px;
+  line-height: 1.2;
+}
+
+.hero-text span {
+  color: orange;
+}
+
+
+.header-inner img{
+    width:30px;
+    height:20px;
+
+}
