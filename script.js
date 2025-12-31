@@ -38,6 +38,7 @@ function initHeaderLogic() {
       e.preventDefault();
 
       const page = link.dataset.page;
+      console.log("Clicked:", page); 
       if (!page) return;
 
       // ACTIVE MENU
@@ -59,8 +60,8 @@ function initHeaderLogic() {
           pageContent.innerHTML = html;
           pageContent.style.display = "block";
 
-          // INIT SLIDER IF PRESENT
-          initSlider(pageContent);
+          // INIT ANY SLIDER FOUND IN PAGE
+          initSliders(pageContent);
         })
         .catch(() => {
           document.getElementById("page-content").innerHTML =
@@ -77,20 +78,26 @@ function initHeaderLogic() {
   function openMobileMenu() {
     navMenu.classList.add("active");
     hamburger.classList.add("active");
-    overlay.classList.add("active");
+    if (overlay) overlay.classList.add("active");
   }
 
   function closeMobileMenu() {
     navMenu.classList.remove("active");
     hamburger.classList.remove("active");
-    overlay.classList.remove("active");
+    if (overlay) overlay.classList.remove("active");
   }
 
-  hamburger.addEventListener("click", () => {
-    navMenu.classList.contains("active") ? closeMobileMenu() : openMobileMenu();
-  });
+  if (hamburger) {
+    hamburger.addEventListener("click", () => {
+      navMenu.classList.contains("active")
+        ? closeMobileMenu()
+        : openMobileMenu();
+    });
+  }
 
-  overlay.addEventListener("click", closeMobileMenu);
+  if (overlay) {
+    overlay.addEventListener("click", closeMobileMenu);
+  }
 
   /* =========================
      HEADER SCROLL EFFECT
@@ -106,53 +113,59 @@ function initHeaderLogic() {
 }
 
 /* =========================
-   UNIVERSAL SLIDER (DOTS)
+   UNIVERSAL SLIDER ENGINE
 ========================== */
-function initSlider(container) {
-  const slides = container.querySelectorAll(".slide");
-  const dotsContainer = container.querySelector(".dots");
+function initSliders(container) {
+  const sliderGroups = [
+    { slide: ".slide", dots: ".dots" },
+    { slide: ".control-slide", dots: ".control-dots" },
+  ];
 
-  if (!slides.length || !dotsContainer) return;
+  sliderGroups.forEach((cfg) => {
+    const slides = container.querySelectorAll(cfg.slide);
+    const dotsContainer = container.querySelector(cfg.dots);
 
-  let index = 0;
-  let interval;
+    if (!slides.length || !dotsContainer) return;
 
-  dotsContainer.innerHTML = "";
+    let index = 0;
+    let interval;
 
-  slides.forEach((_, i) => {
-    const dot = document.createElement("span");
-    dot.classList.add("dot");
-    if (i === 0) dot.classList.add("active");
+    dotsContainer.innerHTML = "";
 
-    dot.addEventListener("click", () => {
-      showSlide(i);
-      resetAutoSlide();
+    slides.forEach((_, i) => {
+      const dot = document.createElement("span");
+      dot.className = "dot";
+      if (i === 0) dot.classList.add("active");
+
+      dot.addEventListener("click", () => {
+        showSlide(i);
+        resetAutoSlide();
+      });
+
+      dotsContainer.appendChild(dot);
     });
 
-    dotsContainer.appendChild(dot);
-  });
+    const dots = dotsContainer.querySelectorAll(".dot");
 
-  const dots = dotsContainer.querySelectorAll(".dot");
+    function showSlide(i) {
+      slides[index].classList.remove("active");
+      dots[index].classList.remove("active");
 
-  function showSlide(i) {
-    slides[index].classList.remove("active");
-    dots[index].classList.remove("active");
+      index = i;
 
-    index = i;
+      slides[index].classList.add("active");
+      dots[index].classList.add("active");
+    }
 
-    slides[index].classList.add("active");
-    dots[index].classList.add("active");
-  }
+    function autoSlide() {
+      showSlide((index + 1) % slides.length);
+    }
 
-  function autoSlide() {
-    showSlide((index + 1) % slides.length);
-  }
+    function resetAutoSlide() {
+      clearInterval(interval);
+      interval = setInterval(autoSlide, 3000);
+    }
 
-  function resetAutoSlide() {
-    clearInterval(interval);
     interval = setInterval(autoSlide, 3000);
-  }
-
-  interval = setInterval(autoSlide, 3000);
+  });
 }
-
