@@ -40,10 +40,13 @@ document.addEventListener("DOMContentLoaded", () => {
               const pageContent = document.getElementById("page-content");
               pageContent.innerHTML = html;
               pageContent.style.display = "block";
+               initCustomAutomationSlider();
             })
             .catch(() => {
               document.getElementById("page-content").innerHTML =
                 "<p style='color:red'>Failed to load Custom Automation</p>";
+                 
+
             });
 
           // CLOSE MOBILE MENU IF OPEN
@@ -108,3 +111,50 @@ document.addEventListener("DOMContentLoaded", () => {
     })
     .catch((err) => console.error("Footer load error:", err));
 });
+function initCustomAutomationSlider() {
+  const slides = document.querySelectorAll("#page-content .slide");
+  const dotsContainer = document.querySelector("#page-content .dots");
+
+  if (!slides.length || !dotsContainer) return;
+
+  let index = 0;
+  let interval;
+
+  dotsContainer.innerHTML = ""; // reset dots
+
+  slides.forEach((_, i) => {
+    const dot = document.createElement("span");
+    dot.classList.add("dot");
+    if (i === 0) dot.classList.add("active");
+
+    dot.addEventListener("click", () => {
+      showSlide(i);
+      resetAutoSlide();
+    });
+
+    dotsContainer.appendChild(dot);
+  });
+
+  const dots = dotsContainer.querySelectorAll(".dot");
+
+  function showSlide(i) {
+    slides[index].classList.remove("active");
+    dots[index].classList.remove("active");
+
+    index = i;
+
+    slides[index].classList.add("active");
+    dots[index].classList.add("active");
+  }
+
+  function autoSlide() {
+    showSlide((index + 1) % slides.length);
+  }
+
+  function resetAutoSlide() {
+    clearInterval(interval);
+    interval = setInterval(autoSlide, 3000);
+  }
+
+  interval = setInterval(autoSlide, 3000);
+}
