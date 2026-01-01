@@ -118,6 +118,8 @@ nav a {
     justify-content:center;
     text-align:center;
     color:black;
+    background:red;
+    padding-bottom:60px;
    
 
 }
@@ -292,7 +294,7 @@ nav a {
 /* LIGHT SECTION */
 .doc-section {
   background: #ffffff;
-  width: 100vw;          /* full screen */
+  width: 100%;          /* full screen */
   padding: 120px 0;      /* top/bottom only */
 }
 
@@ -357,7 +359,7 @@ nav a {
 }
 .split-section {
   display: flex;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
 }
 
@@ -573,6 +575,7 @@ nav a {
     font-size: 18px;
     transition: color 0.3s ease;
     color: #000000;
+    z-index:10002;
   }
 
  
@@ -583,20 +586,19 @@ nav a {
     opacity: 0;
     visibility: hidden;
     transition: 0.3s;
-    z-index: 10000;
+    z-index: 999;
+    pointer-events:none;
   }
 
   #menu-overlay.active {
     opacity: 1;
     visibility: visible;
+    pointer-events: auto;
   }
 }
 
 
-#menu-overlay.active {
-  opacity: 1;
-  visibility: visible;
-}
+
 /* ===============================
    RETROFITTING PAGE LAYOUT
 ================================ */
@@ -1176,10 +1178,5 @@ nav a {
     height: 300px;
   }
 }
-#menu-overlay {
-  pointer-events: none;
-}
 
-#menu-overlay.active {
-  pointer-events: auto;
-}
+
