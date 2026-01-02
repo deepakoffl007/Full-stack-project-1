@@ -14,6 +14,10 @@ h1, h2, h3 {
   text-transform: uppercase; /* ABB style */
 }
 }
+html, body {
+  width: 100%;
+  overflow-x: hidden;
+}
 img{
   max-width:100%;
 
@@ -107,7 +111,7 @@ nav a {
   height: 100%;
   display: flex;
   align-items: center;
-  padding-left: 80px;
+  padding-left:0px;
   color: white;
 }
 
