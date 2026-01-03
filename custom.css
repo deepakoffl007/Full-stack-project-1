@@ -197,5 +197,10 @@ h1, h2, h3 {
 @media (max-width: 768px){
   .BAM{
     margin-left: 0;
+    padding-left:20px;
+  }
+  
+  .topp {
+    padding-left:20px;
   }
 }
