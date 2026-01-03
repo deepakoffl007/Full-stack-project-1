@@ -17,64 +17,72 @@ document.addEventListener("DOMContentLoaded", () => {
     .then((res) => res.text())
     .then((html) => {
       document.getElementById("footer-placeholder").innerHTML = html;
+      initFooterLinks();
     })
     .catch((err) => console.error("Footer load error:", err));
 });
 
 /* =========================
-   HEADER + NAV LOGIC
+   PAGE LOADER (CORE)
+========================== */
+function loadPage(page) {
+  const home = document.getElementById("home-content");
+  const pageContent = document.getElementById("page-content");
+
+  // HOME
+  if (page === "home") {
+    if (home) home.style.display = "block";
+    if (pageContent) {
+      pageContent.innerHTML = "";
+      pageContent.style.display = "none";
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+    return;
+  }
+
+  // OTHER PAGES
+  if (home) home.style.display = "none";
+  pageContent.style.display = "block";
+
+  fetch(page)
+    .then((res) => {
+      if (!res.ok) throw new Error("Page not found");
+      return res.text();
+    })
+    .then((html) => {
+      pageContent.innerHTML = html;
+      initSliders(pageContent);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    })
+    .catch(() => {
+      pageContent.innerHTML = "<p style='color:red'>Failed to load page</p>";
+    });
+}
+
+/* =========================
+   HEADER LOGIC
 ========================== */
 function initHeaderLogic() {
-  const navLinks = document.querySelectorAll("#nav-menu a");
+  const navLinks = document.querySelectorAll("#nav-menu a[data-page]");
   const hamburger = document.getElementById("hamburger");
   const navMenu = document.getElementById("nav-menu");
   const overlay = document.getElementById("menu-overlay");
 
-  /* =========================
-     NAV CLICK (ALL PAGES)
-  ========================== */
   navLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
       e.preventDefault();
 
       const page = link.dataset.page;
-      console.log("Clicked:", page); 
       if (!page) return;
 
-      // ACTIVE MENU
       navLinks.forEach((a) => a.classList.remove("active"));
       link.classList.add("active");
 
-      // HIDE HOME
-      const home = document.getElementById("home-content");
-      if (home) home.style.display = "none";
-
-      // LOAD PAGE
-      fetch(page)
-        .then((res) => {
-          if (!res.ok) throw new Error("Page not found");
-          return res.text();
-        })
-        .then((html) => {
-          const pageContent = document.getElementById("page-content");
-          pageContent.innerHTML = html;
-          pageContent.style.display = "block";
-
-          // INIT ANY SLIDER FOUND IN PAGE
-          initSliders(pageContent);
-        })
-        .catch(() => {
-          document.getElementById("page-content").innerHTML =
-            "<p style='color:red'>Failed to load page</p>";
-        });
-
+      loadPage(page);
       closeMobileMenu();
     });
   });
 
-  /* =========================
-     MOBILE MENU
-  ========================== */
   function openMobileMenu() {
     navMenu.classList.add("active");
     hamburger.classList.add("active");
@@ -95,13 +103,9 @@ function initHeaderLogic() {
     });
   }
 
-  if (overlay) {
-    overlay.addEventListener("click", closeMobileMenu);
-  }
+  if (overlay) overlay.addEventListener("click", closeMobileMenu);
 
-  /* =========================
-     HEADER SCROLL EFFECT
-  ========================== */
+  /* HEADER SCROLL */
   window.addEventListener("scroll", () => {
     const header = document.getElementById("main-header");
     if (!header) return;
@@ -109,6 +113,22 @@ function initHeaderLogic() {
     window.scrollY > 80
       ? header.classList.add("scrolled")
       : header.classList.remove("scrolled");
+  });
+}
+
+/* =========================
+   FOOTER LOGIC
+========================== */
+function initFooterLinks() {
+  const footerLinks = document.querySelectorAll(".site-footer a[data-page]");
+
+  footerLinks.forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const page = link.dataset.page;
+      if (!page) return;
+      loadPage(page);
+    });
   });
 }
 
@@ -150,9 +170,7 @@ function initSliders(container) {
     function showSlide(i) {
       slides[index].classList.remove("active");
       dots[index].classList.remove("active");
-
       index = i;
-
       slides[index].classList.add("active");
       dots[index].classList.add("active");
     }
