@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Inter", "Helvetica Neue", Arial, sans-serif;
+    
 
 
 h1, h2, h3 {
@@ -21,8 +21,8 @@ h1, h2, h3 {
 }
 
 .top{
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
-  font:normal;
+ 
+  
   font-size: 20px;
   font-weight:100;
   color: #555555;
@@ -31,8 +31,8 @@ h1, h2, h3 {
 }
 
 .topp {
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
-    font:normal;
+
+    
     max-width: 1172px;
     margin: auto; 
     padding-top: 30px;
@@ -58,29 +58,29 @@ h1, h2, h3 {
 
 .ha{
     margin-bottom: 15px;
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
-    font:normal;
+   
+    
     font-weight: 50;
 }
 
 .p1{
     margin-bottom: 20px;
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
-    font:normal;
+  
+    
     
 }
 
 .p2{
     margin-bottom: 20px;
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
-    font:normal;
+   
+    
     
 }
 
 .p3{
     margin-bottom: 20px;
-    font-family: "Roboto", Arial, Helvetica, sans-serif;
-    font:normal;
+   
+    
 }
 
 .paramain p {
@@ -144,8 +144,9 @@ h1, h2, h3 {
 
 .BAM{
   max-width: 800px;
-  padding-left: 172px;
-  font-family: "Roboto", Arial, Helvetica, sans-serif;
+  margin-left: 172px;
+   width:100%;
+  
   font:normal;
   color: #777777;
   
@@ -170,4 +171,31 @@ h1, h2, h3 {
 
 .bottomspace{
   padding-bottom: 100px;
+}
+
+.retromain {
+  max-width: 1216px;
+  margin: 0 auto;
+  padding-top: 60px;
+  padding-left: 20px;
+  padding-right: 20px;
+  display: flex;
+  color: #777777;
+  gap: 40px;
+  align-items: center;
+  
+
+}
+
+.ret {
+  flex: 1;
+}
+.ret h4{
+  font-weight:200;
+}
+
+@media (max-width: 768px){
+  .BAM{
+    margin-left: 0;
+  }
 }
