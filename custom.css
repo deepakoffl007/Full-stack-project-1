@@ -39,7 +39,7 @@ h1, h2, h3 {
     color: #777777;
     line-height: 1.5;
     font-size: 18px;
-    font-weight: 50px;
+    font-weight: 50;
     
 }
 
@@ -143,11 +143,12 @@ h1, h2, h3 {
 }
 
 .BAM{
+  max-width: 800px;
   padding-left: 172px;
   font-family: "Roboto", Arial, Helvetica, sans-serif;
   font:normal;
   color: #777777;
-  padding-bottom: 100px;
+  
 }
 
 .BAM h4{
@@ -160,4 +161,13 @@ h1, h2, h3 {
   padding-top: 20px;
   padding-bottom: 10px;
   font-weight: 50;
+}
+
+.intpara{
+  padding-top: 15px;
+  
+}
+
+.bottomspace{
+  padding-bottom: 100px;
 }
